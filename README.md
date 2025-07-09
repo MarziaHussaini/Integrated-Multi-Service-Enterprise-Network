@@ -258,6 +258,7 @@ Interface- VLAN 90 (SVI)
 
 
 
+
 <b> FWL1 – Firewall 1 (Primary Firewall)</b>
 
 Interface-Gi1/1
@@ -324,7 +325,9 @@ Interface-Gi1/5
 
 <b>FWL1-2 diagram</b>
 
+
 <img width="486" alt="firwal" src="https://github.com/user-attachments/assets/29f5f6cf-5ab9-4d8c-8709-0ab6b396bd35" />
+
 
 
 
@@ -347,6 +350,8 @@ Interface-Gi0/1
 
 
 <img width="441" alt="ISP" src="https://github.com/user-attachments/assets/bbf5d504-ccfb-4b6d-bb55-575c727cdcc0" />
+
+
 
 
 <b> Cisco Voice Gateway</b>
@@ -378,6 +383,8 @@ Interface-Gi0/1
 
 
 <img width="541" alt="gatway" src="https://github.com/user-attachments/assets/7ff6c583-3dba-4735-b053-cf8ec013747b" />
+
+
 
 
 
@@ -421,7 +428,48 @@ Web Server (WEB)
 <img width="481" alt="NEW DMZ" src="https://github.com/user-attachments/assets/ba6077c8-03dc-4c3d-b141-bc29a45822f4" />
 
 
+<B> External User & Cloud </B>
+China User
+- <b>IP Adress: 8.0.0.20<b>
+ - <b> Subnet Mask: 255.0.0.0 /8<b>
+- <b> Gateway: 30.30.30.30<b>
+- <b> Role: Remote User <b>
+- <b> Purpose: Access internal services (App, Web, VoIP, etc.) via Internet (possibly VPN) <b>
 
+USA User
+- <b>IP Adress: 8.0.0.10<b>
+ - <b> Subnet Mask: 255.0.0.0 /8<b>
+- <b> Gateway: 20.20.20.20 <b>
+- <b> Role: Remote User <b>
+- <b> Purpose: Access internal systems securely (VPN/Web/App/Voice)<b>
+
+Cloud
+- <b>IP Adress: 20.20.20.2/30.30.30.2<b>
+ - <b> Subnet Mask: 255.255.255.252/30<b>
+- <b> Gateway: 20.20.20.1/30.30.30.1 <b>
+- <b> Role: External Cloud Server<b>
+- <b> Purpose: Provides hosted services (VoIP trunk, backup, DNS, cloud apps, etc.) <b>
+
+
+<B> External User & Cloud Diagram</B>
+
+
+<img width="560" alt="cloud" src="https://github.com/user-attachments/assets/64c7ae66-0c37-4cb2-a625-3e33cfdd15bd" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<B> Verified configuration diagram</B>
 
 
 
