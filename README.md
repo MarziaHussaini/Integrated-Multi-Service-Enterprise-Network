@@ -473,9 +473,6 @@ Cloud
 
 <B> Firewall (FWL1 & FWL2) Verification </B>
 
-- <b>Purpose: Secure traffic between outside (ISP) and inside (LAN, DMZ).<b>
-
-- <b>Verified NAT, ACLs, and OSPF if configured correctly<b>
 
 Firewall (FWL) Verification 
 
