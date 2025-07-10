@@ -511,9 +511,55 @@ CORE-SW2 Verification
 
 
 
-<B> Core Switches (CORE-SW1 and CORE-SW2) </B>
+<B> Core Switches (CORE-SW1 and CORE-SW2) Verification  </B>
 
-- <b>Purpose: Inter-VLAN routing, connecting LAN, DMZ, firewall, etc<b>
+CORE-SW1 
 
-- <b>Confirm VLANs are assigned, SVI (interface VLANs) are up<b>
+<img width="412" height="478" alt="sw1 PING" src="https://github.com/user-attachments/assets/69637bda-4abb-4651-8744-6525fc948bb8" />
+
+
+
+
+
+
+
+
+CORE-SW1
+
+<img width="454" height="486" alt="sw1 PING 2" src="https://github.com/user-attachments/assets/1865496b-fb30-407d-974b-ad090a33516f" />
+
+
+
+
+
+
+
+CORE-SW2
+
+<img width="411" height="482" alt="PING 1" src="https://github.com/user-attachments/assets/c4208cc8-eb2f-40bc-9e70-e36ed60ba8f1" />
+
+
+
+
+
+
+
+
+CORE-SW2
+
+<img width="500" height="481" alt="PING 2" src="https://github.com/user-attachments/assets/18f0bde8-b2db-4d61-8fd9-1865208a5c54" />
+
+
+
+
+
+
+
+
+
+<B> Routers (SEACOM & SAFARICOM) Verification  </B>
+
+
+
+
 
