@@ -471,5 +471,49 @@ Cloud
 
 <B> Verified configuration diagram</B>
 
+<B> Firewall (FWL1 & FWL2) Verification </B>
 
+- <b>Purpose: Secure traffic between outside (ISP) and inside (LAN, DMZ).<b>
+
+- <b>Verified NAT, ACLs, and OSPF if configured correctly<b>
+
+Firewall (FWL) Verification 
+
+
+<img width="427" alt="Fw1" src="https://github.com/user-attachments/assets/e202f1cd-4dc0-4741-a900-e8225de5912d" />
+
+
+
+
+Firewal2 (FWL) Verification 
+
+
+<img width="416" alt="fw2" src="https://github.com/user-attachments/assets/8afd93a1-8a68-4d5c-bbf3-ec69c7c0d6de" />
+
+
+
+
+CORE-SW1 Verification 
+
+
+
+<img width="374" alt="SW1" src="https://github.com/user-attachments/assets/a0e256b5-4193-4de1-9742-1f18b8f57b41" />
+
+
+CORE-SW2 Verification 
+
+
+
+
+<img width="567" alt="SW2" src="https://github.com/user-attachments/assets/943ddf8e-4c55-4df7-b22d-b2ac2426cd9e" />
+
+
+
+
+
+<B> Core Switches (CORE-SW1 and CORE-SW2) </B>
+
+- <b>Purpose: Inter-VLAN routing, connecting LAN, DMZ, firewall, etc<b>
+
+- <b>Confirm VLANs are assigned, SVI (interface VLANs) are up<b>
 
