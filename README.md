@@ -2,114 +2,84 @@
 
 <h2>Description</h2>
 
+<p>
+This project implements a comprehensive enterprise network architecture incorporating VLANs, secure remote access, routing, switching, IP addressing, wireless, VoIP, and firewall policies. Below is a breakdown of the key technologies and their roles:
+</p>
 
-🔹 VLAN segments switch ports into separate virtual networks; trunk ports carry traffic for multiple VLANs using tags.
+<ul>
+  <li><b>VLAN:</b> Segments switch ports into separate broadcast domains; trunk ports carry traffic for multiple VLANs using tagging.</li>
+  <li><b>SSH:</b> Enables encrypted remote access to network devices, ensuring confidentiality, integrity, and authentication.</li>
+  <li><b>Standard ACL:</b> Filters traffic based on source IP address—for example, blocking 192.168.1.0/24 to secure critical systems.</li>
+  <li><b>NAT:</b> Translates private IPs to public IPs, allowing multiple devices to share a single Internet IP while hiding internal addresses.</li>
+  <li><b>STP:</b> Prevents Layer 2 loops by creating a loop-free topology using root bridge election and path cost calculation.</li>
+  <li><b>PortFast:</b> Bypasses STP delays on access ports, allowing end devices to connect instantly. Not used on uplinks.</li>
+  <li><b>BPDU Guard:</b> Disables PortFast-enabled ports if BPDUs are received, protecting against rogue switch connections.</li>
+  <li><b>EtherChannel:</b> Aggregates multiple physical links into one logical link for increased bandwidth and redundancy; STP treats it as a single path.</li>
+  <li><b>IP Addressing & Subnetting:</b> Defines device identities and network boundaries using subnet masks to differentiate host and network portions.</li>
+  <li><b>HSRP:</b> Provides gateway redundancy by assigning active/standby roles to routers; enables seamless failover for high availability.</li>
+  <li><b>LACP (802.3ad):</b> Dynamically bundles multiple physical links into a logical interface for load balancing and fault tolerance.</li>
+  <li><b>DHCP:</b> Automatically assigns IP addresses and configuration (gateway, DNS) to clients for simplified setup.</li>
+  <li><b>DHCP Relay (Helper):</b> Forwards DHCP requests across subnets, enabling centralized IP address assignment in routed environments.</li>
+  <li><b>DMZ:</b> A semi-secure zone between the internal network and the Internet, typically used to host public-facing services.</li>
+  <li><b>Server Farm:</b> Centralized group of servers providing scalable and redundant services and applications.</li>
+  <li><b>OSPF:</b> A dynamic routing protocol used to compute the shortest path and adapt to network changes, ideal for large networks.</li>
+  <li><b>Wireless Network:</b> Enables wireless access for mobile clients such as laptops and smartphones.</li>
+  <li><b>Access Points (APs):</b> Broadcast wireless signals to connect end-user devices to the wired LAN.</li>
+  <li><b>Wireless LAN Controller (WLC):</b> Centrally manages APs, providing secure, scalable wireless deployment with seamless roaming.</li>
+  <li><b>CAPWAP:</b> A protocol that allows centralized management of APs by WLCs over Layer 3 networks.</li>
+  <li><b>VoIP:</b> Delivers voice communication over IP networks, reducing costs and enabling unified communications.</li>
+</ul>
 
-🔹 SSH provides secure, encrypted remote access to network devices, ensuring confidentiality, authentication, and integrity.
+<h2>Configuration Steps</h2>
+<ol>
+  <li><b>Network Architecture Diagram</b></li>
+  <li><b>Initial Setup:</b> Basic settings, SSH configuration, and standard ACL for secure device access.</li>
+  <li><b>VLAN Configuration:</b> Assign access and trunk ports on Layer 2 and Layer 3 switches.</li>
+  <li><b>STP Enhancements:</b> Apply PortFast and BPDU Guard to all access ports.</li>
+  <li><b>EtherChannel:</b> Configure link aggregation between switches and/or routers.</li>
+  <li><b>IP Addressing & Subnetting:</b> Allocate IP ranges and configure devices accordingly.</li>
+  <li><b>HSRP & Inter-VLAN Routing:</b> Enable gateway redundancy and route between VLANs on L3 switches; add DHCP relay addresses.</li>
+  <li><b>Static IPs:</b> Assign static IP addresses to DMZ and server farm devices.</li>
+  <li><b>DHCP Server Configuration:</b> Set scopes and options for automatic IP assignment.</li>
+  <li><b>OSPF Configuration:</b> Enable dynamic routing on firewalls, routers, and switches.</li>
+  <li><b>Firewall Zones:</b> Define interface zones and assign security levels.</li>
+  <li><b>Firewall Routing:</b> Configure static routes and OSPF for redundancy.</li>
+  <li><b>Firewall Policies:</b> Apply stateful inspection and ACLs.</li>
+  <li><b>Wireless Configuration:</b> Set up APs, WLC, and SSIDs.</li>
+  <li><b>VoIP Configuration:</b> Assign IP phones, voice VLANs, and QoS policies.</li>
+  <li><b>Testing & Validation:</b> Verify functionality and troubleshoot as needed.</li>
+</ol>
 
-🔹 Standard ACL filters traffic based solely on source IP, e.g., blocking 192.168.1.0/24 to protect sensitive systems.
+<h2>Tools and Technologies Used</h2>
+<ul>
+  <li><b>VLANs</b></li>
+  <li><b>SSH</b></li>
+  <li><b>ACL</b></li>
+  <li><b>NAT</b></li>
+  <li><b>STP</b></li>
+  <li><b>PortFast</b></li>
+  <li><b>BPDU Guard</b></li>
+  <li><b>EtherChannel</b></li>
+  <li><b>IP Addressing & Subnetting</b></li>
+  <li><b>HSRP</b></li>
+  <li><b>LACP</b></li>
+  <li><b>DHCP & DHCP Helper</b></li>
+  <li><b>DMZ</b></li>
+  <li><b>Server Farm</b></li>
+  <li><b>OSPF</b></li>
+  <li><b>Wireless Networking</b></li>
+  <li><b>Access Points (APs)</b></li>
+  <li><b>Wireless LAN Controller (WLC)</b></li>
+  <li><b>CAPWAP</b></li>
+  <li><b>VoIP</b></li>
+</ul>
 
-🔹 NAT translates private IPs to public IPs, allowing multiple devices to share one Internet address while hiding internal networks.
+<h2>Environments Used</h2>
+<ul>
+  <li><b>Windows 11</b></li>
+  <li><b>Cisco Packet Tracer</b></li>
+</ul>
 
-🔹 STP prevents Layer 2 loops by creating a loop-free topology through root bridge selection and path cost calculation.
-
-🔹 PortFast enables immediate forwarding on access ports by bypassing STP delays—used only for end devices, not switch links.
-
-🔹 BPDU Guard protects PortFast ports by disabling them upon receiving BPDUs, preventing accidental/malicious switch connections.
-
-🔹 EtherChannel aggregates physical links into one logical link, increasing bandwidth and redundancy; STP treats it as a single link.
-
-🔹 IP Address & Subnetting define device identity and network boundaries; the subnet mask separates network and host portions.
-
-🔹 HSRP provides gateway redundancy by assigning active/standby roles to routers; failover ensures continuous connectivity.
-
-🔹 LACP (IEEE 802.3ad) bundles physical links into a single logical interface for higher bandwidth and fault tolerance.
-
-🔹 DHCP auto-assigns IP addresses and network settings (subnet, gateway, DNS) to clients for simplified configuration.
-
-🔹 DHCP Helper (relay) forwards DHCP requests across subnets, enabling centralized IP assignment in routed networks.
-
-🔹 DMZ is a secure zone between internal networks and the Internet, hosting public services while isolating critical systems.
-
-🔹 Server Farm is a centralized group of servers providing scalable, redundant resources for applications and services.
-
-🔹 OSPF is a dynamic routing protocol that calculates optimal paths and quickly adapts to network changes—ideal for large networks.
-
-🔹 Wireless Network enables cable-free connectivity for mobile devices like laptops and smartphones.
-
-🔹 Access Points (APs) broadcast Wi-Fi signals, connecting wireless devices to the network.
-
-🔹 Wireless LAN Controller (WLC) centrally manages multiple APs, ensuring secure, seamless connectivity and roaming.
-
-🔹 CAPWAP allows WLCs to control APs remotely and efficiently using a standardized protocol.
-
-🔹 VoIP delivers voice communication over IP networks.
-
-<br />
-
-
-<h2>CONFIG STEPS</h2>
-- <b> Network Architecture Diagram </b> 
-
-- <b> Basic settings to all devices + SSH + Standard ACL for SSH </b>
-
-- <b> VLAN assignment plus all access and trunk ports on l2 and l3 switches </b>
-
-- <b> STP Portfast and BPDUguard configs on all access ports </b>
-
-- <b> EtherChannel </b>
-
-- <b> Subnetting and IP addressing </b>
-
-- <b> HSRP and Inter-VLAN routing on the l3 switches plus ip dhcp helper addresses</b>
-
-- <b> Static IP address to DMZ/server farm devices</b>
-
-- <b> DHCP server device configurations </b>
-
-- <b> OSPF on the firewall, routers, and switches </b>
-
-- <b> Firewall interface security zones and levels </b>
-
-- <b> Firewall routing-OSPF + Static Routes </b>
-
-- <b> Firewall inspection policy configuration </b>
-
-- <b> Wireless network configurations </b>
-
-- <b> VOIP Configs </b>
-
-- <b> Verifying and testing configurations </b>
-
-<h2>Tools and Utilities Used</h2>
-
-- <b>VLANs</b> 
-- <b>SSH</b>
-- <b> ACL </b>
-- <b> NAT </b>
-- <b> STP </b>
-- <b> PortFast </b>
-- <b> BPDU </b> 
-- <b> EtherChannel </b>
-- <b> IP Address and Subnetting </b>
-- <b> HSRP </b>
-- <b> LACP </b>
-- <b> DHCP </b>
-- <b> DHCP Helper </b>
-- <b> DMZ </b>
-- <b> Server Farm </b>
-- <b> OSPF </b>
-- <b> Wireless Network </b>
-- <b> APs </b>
-- <b> WLC </b>
-- <b> CAPWAP </b>
-- <b> VoIP </b>
-
-
-<h2>Environments Used </h2>
-
-- <b>Windows 11</b> 
-- <b>Cisco Packet Tracer </b>
 
 <h2>Network diagram</h2>
 
@@ -119,211 +89,306 @@
 
 
 
-<h2>Program walk-through</h2>
+<h2>Program Walk-through</h2>
 
-<b>Open Cisco Packet Tracer </b>
+<p><b>Open Cisco Packet Tracer</b></p>
 
-<b> Devices Used <b>
+<h3>Devices Used</h3>
+<ul>
+  <li><b>PCs, IP Phones, Printers, Tablets, Smartphones, and Access Points (APs)</b></li>
+  <li><b>6 Layer 2 Switches and 2 Layer 3 Switches (with HSRP, LACP, and Routing)</b></li>
+  <li><b>2 Firewalls (Block threats and allow safe traffic)</b></li>
+  <li><b>DMZ (Web, FTP, E-Mail, APP & NAS servers)</b></li>
+  <li><b>2 ISPs, Cloud, USA-User, and China-User networks</b></li>
+  <li><b>Server (DHCP, RADIUS, and DNS)</b></li>
+  <li><b>1 Router for Voice Gateway and PC for Wireless LAN Controller configuration</b></li>
+  <li><b>Crossover and straight-through cables used to connect devices</b></li>
+</ul>
 
-- <b> PCs, IP Phones, Printer, Tablet, smartphone, and APs<b>
-- <b> 6 Layer 2 Switches and 2 Switches layer 3(HSRP, LACP and routing) <b>
-- <b> 2 Firewall (Blocks threats and allows safe traffic) <b>
-- <b> DMZ (Web, FTP, E-Mail, APP & NAS) <b>
-- <b> 2 ISP, CLOUD, USA-USER, & CHINA-USER <b>
-- <b> SERVER (DHCP, RADIUS, & DNS) <b>
-- <b> 1 ROUTER for voice Gateway, PC for configuration of Wireless LAN Controller <b>
-- <b> Crossover and straight-through cables were used to connect the devices<b>
+<h3>VLAN & IP Addressing</h3>
+<p><b>Each group of devices is logically isolated using VLANs to segment traffic, enhancing security and performance.</b></p>
 
-<b> VLAN & IP Addressing <b>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>VLAN</th>
+      <th>Subnet</th>
+      <th>Subnet Mask</th>
+      <th>Default Gateway</th>
+      <th>Address Type</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VLAN 10</td>
+      <td>192.168.10.0/24</td>
+      <td>255.255.255.0</td>
+      <td>192.168.10.100</td>
+      <td>DHCP</td>
+      <td>Management VLAN (Switches, WLC, APs)</td>
+    </tr>
+    <tr>
+      <td>VLAN 20</td>
+      <td>172.16.0.0/16</td>
+      <td>255.255.0.0</td>
+      <td>172.16.0.1</td>
+      <td>DHCP</td>
+      <td>User LAN (PCs, Printers)</td>
+    </tr>
+    <tr>
+      <td>VLAN 50</td>
+      <td>10.20.0.0/16</td>
+      <td>255.255.0.0</td>
+      <td>10.20.0.1</td>
+      <td>DHCP</td>
+      <td>Wireless LAN (Clients via APs)</td>
+    </tr>
+    <tr>
+      <td>VLAN 70</td>
+      <td>172.30.0.0/16</td>
+      <td>255.255.0.0</td>
+      <td>172.30.0.1</td>
+      <td>DHCP</td>
+      <td>VoIP / IP Phones</td>
+    </tr>
+    <tr>
+      <td>VLAN 90</td>
+      <td>10.11.11.32/27</td>
+      <td>255.255.255.224</td>
+      <td>10.11.11.33</td>
+      <td>DHCP</td>
+      <td>DMZ / Internal Servers</td>
+    </tr>
+  </tbody>
+</table>
 
-<b> Each group of PCs is isolated logically using VLANs to segment traffic and improve security/performance <b>
-
-VALN 10
- - <b> Subnet: 192.168.10.0/24<b>
-- <b>Subnet Mask: 255.255.255.0<b>
- - <b> Default Gateway: 192.168.10.100<b>
- - <b> Address Type: DHCP<b>
-- <b> Purpose: Management VLAN (Switches, WLC, AP) <b>
-
-VALN 20
-- <b> Subnet: 172.16.0.0/16<b>
-- <b>Subnet Mask: 255.255.0.0 <b>
- - <b> Default Gateway: 172.16.0.1<b>
- - <b> Address Type: DHCP<b>
-- <b> Purpose: connected to User LAN (PCs, printers) <b>
-
-
-VALN 50
-- <b> Subnet: 10.20.0.0/16<b>
-- <b>Subnet Mask: 255.255.0.0 <b>
- - <b> Default Gateway: 10.20.0.1<b>
- - <b> Address Type: DHCP<b>
-- <b> Purpose: Wireless LAN (Clients via APs) <b>
-
-VALN 70
-- <b> Subnet: 172.30.0.0/16<b>
-- <b>Subnet Mask: 255.255.0.0 <b>
- - <b> Default Gateway: 172.30.0.1<b>
- - <b> Address Type: DHCP<b>
-- <b> Purpose: VoIP / IP Phones<b>
-
-VALN 90
-- <b> Subnet: 10.11.11.32/27<b>
-- <b>Subnet Mask: 255.255.255.224<b>
- - <b> Default Gateway: 10.11.11.33<b>
- - <b> Address Type: DHCP<b>
-- <b> Purpose: DMZ / Internal Servers<b>
-
-<b> VLAN Diagram </b>
+<p><b>VLAN Diagram</b></p>
 
 <img width="879" alt="LAN DIAGRAM" src="https://github.com/user-attachments/assets/ae1576c1-2d90-4166-9b4d-8d98c33eec23" />
 
 
-<b> CORE-SW1 <b>
+<h2>CORE-SW1</h2>
 
-Interface-Gi1/0/1
-- <b> IP Address: 10.2.2.1<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
- - <b> Purpose / Role: Connects to FWL1 (Inside)<b>
+<ul>
+  <li><b>Interface Gi1/0/1</b>
+    <ul>
+      <li>IP Address: 10.2.2.1</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connects to FWL1 (Inside)</li>
+    </ul>
+  </li>
 
- Interface-Gi1/0/2
-- <b> IP Address: 10.2.2.5<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
- - <b> Purpose / Role: Connects to FWL2 (Inside)<b>
+  <li><b>Interface Gi1/0/2</b>
+    <ul>
+      <li>IP Address: 10.2.2.5</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connects to FWL2 (Inside)</li>
+    </ul>
+  </li>
 
-Interface- VLAN 10 (SVI)
-- <b> IP Address: 192.168.10.3<b>
-- <b> Gateway: 192.168.10.100<b>
- - <b> Subnet Mask: 255.255.255.0 /24<b>
- - <b> Purpose / Role: Management VLAN – switches, WLC, APs<b>
- 
-Interface- VLAN 20 (SVI)
-- <b> IP Address: 172.16.0.3<b>
-- <b> Gateway: 172.16.0.1<b>
- - <b> Subnet Mask: 255.255.0.0 /16<b>
- - <b> Purpose / Role: User LAN VLAN – PCs, printers<b>
+  <li><b>Interface VLAN 10 (SVI)</b>
+    <ul>
+      <li>IP Address: 192.168.10.3</li>
+      <li>Gateway: 192.168.10.100</li>
+      <li>Subnet Mask: 255.255.255.0 (/24)</li>
+      <li>Purpose / Role: Management VLAN – switches, WLC, APs</li>
+    </ul>
+  </li>
 
-Interface- VLAN 50 (SVI)
-- <b> IP Address: 10.20.0.2<b>
-- <b> Gateway: 10.20.0.1<b>
- - <b> Subnet Mask: 255.255.0.0 /16<b>
- - <b> Purpose / Role: Wireless VLAN – AP clients<b>
+  <li><b>Interface VLAN 20 (SVI)</b>
+    <ul>
+      <li>IP Address: 172.16.0.3</li>
+      <li>Gateway: 172.16.0.1</li>
+      <li>Subnet Mask: 255.255.0.0 (/16)</li>
+      <li>Purpose / Role: User LAN VLAN – PCs, printers</li>
+    </ul>
+  </li>
 
-Interface- VLAN 90 (SVI)
-- <b> IP Address: 10.11.11.34<b>
-- <b> Gateway: 10.11.11.33<b>
- - <b> Subnet Mask: 255.255.255.224 /27<b>
- - <b> Purpose / Role: Server VLAN / DMZ Access – connects to FWL1 Gi1/5<b>
+  <li><b>Interface VLAN 50 (SVI)</b>
+    <ul>
+      <li>IP Address: 10.20.0.2</li>
+      <li>Gateway: 10.20.0.1</li>
+      <li>Subnet Mask: 255.255.0.0 (/16)</li>
+      <li>Purpose / Role: Wireless VLAN – AP clients</li>
+    </ul>
+  </li>
 
-<b> CORE-SW2 </b>
+  <li><b>Interface VLAN 90 (SVI)</b>
+    <ul>
+      <li>IP Address: 10.11.11.34</li>
+      <li>Gateway: 10.11.11.33</li>
+      <li>Subnet Mask: 255.255.255.224 (/27)</li>
+      <li>Purpose / Role: Server VLAN / DMZ Access – connects to FWL1 Gi1/5</li>
+    </ul>
+  </li>
+</ul>
 
-Interface-Gi1/0/1
-- <b> IP Address: 10.2.2.13<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
- - <b> Purpose / Role: Connects to FWL2 (Inside)<b>
+<h2>CORE-SW2</h2>
 
- Interface-Gi1/0/2
-- <b> IP Address: 10.2.2.9<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
- - <b> Purpose / Role: Connects to FWL1(Inside)<b>
+<ul>
+  <li><b>Interface Gi1/0/1</b>
+    <ul>
+      <li>IP Address: 10.2.2.13</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connects to FWL2 (Inside)</li>
+    </ul>
+  </li>
 
-Interface- VLAN 10 (SVI)
-- <b> IP Address: 192.168.10.2<b>
-- <b> Gateway: 192.168.10.100<b>
- - <b> Subnet Mask: 255.255.255.0 /24<b>
- - <b> Purpose / Role: Management VLAN – switches, WLC, APs<b>
- 
-Interface- VLAN 20 (SVI)
-- <b> IP Address: 172.16.0.2<b>
-- <b> Gateway: 172.16.0.1<b>
- - <b> Subnet Mask: 255.255.0.0 /16<b>
- - <b> Purpose / Role: User LAN VLAN – PCs, printers<b>
+  <li><b>Interface Gi1/0/2</b>
+    <ul>
+      <li>IP Address: 10.2.2.9</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connects to FWL1 (Inside)</li>
+    </ul>
+  </li>
 
-Interface- VLAN 50 (SVI)
-- <b> IP Address: 10.20.0.3<b>
-- <b> Gateway: 10.20.0.1<b>
- - <b> Subnet Mask: 255.255.0.0 /16<b>
- - <b> Purpose / Role: Wireless VLAN – AP clients<b>
+  <li><b>Interface VLAN 10 (SVI)</b>
+    <ul>
+      <li>IP Address: 192.168.10.2</li>
+      <li>Gateway: 192.168.10.100</li>
+      <li>Subnet Mask: 255.255.255.0 (/24)</li>
+      <li>Purpose / Role: Management VLAN – switches, WLC, APs</li>
+    </ul>
+  </li>
 
-Interface- VLAN 90 (SVI)
-- <b> IP Address: 10.11.11.35<b>
-- <b> Gateway: 10.11.11.33<b>
- - <b> Subnet Mask: 255.255.255.224 /27<b>
- - <b> Purpose / Role: Server VLAN / DMZ Access – connects to FWL1 Gi1/5<b>
+  <li><b>Interface VLAN 20 (SVI)</b>
+    <ul>
+      <li>IP Address: 172.16.0.2</li>
+      <li>Gateway: 172.16.0.1</li>
+      <li>Subnet Mask: 255.255.0.0 (/16)</li>
+      <li>Purpose / Role: User LAN VLAN – PCs, printers</li>
+    </ul>
+  </li>
 
-<b>SW1-2 diagram</b>
+  <li><b>Interface VLAN 50 (SVI)</b>
+    <ul>
+      <li>IP Address: 10.20.0.3</li>
+      <li>Gateway: 10.20.0.1</li>
+      <li>Subnet Mask: 255.255.0.0 (/16)</li>
+      <li>Purpose / Role: Wireless VLAN – AP clients</li>
+    </ul>
+  </li>
+
+  <li><b>Interface VLAN 90 (SVI)</b>
+    <ul>
+      <li>IP Address: 10.11.11.35</li>
+      <li>Gateway: 10.11.11.33</li>
+      <li>Subnet Mask: 255.255.255.224 (/27)</li>
+      <li>Purpose / Role: Server VLAN / DMZ Access – connects to FWL1 Gi1/5</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>SW1-2 Diagram</h3>
+
 
 
 <img width="841" alt="sw-12 final " src="https://github.com/user-attachments/assets/98b1a01a-cd2d-4828-a924-1764bbc118c2" />
 
 
 
+<h2>FWL1 – Firewall 1 (Primary Firewall)</h2>
 
-<b> FWL1 – Firewall 1 (Primary Firewall)</b>
+<ul>
+  <li><b>Interface Gi1/1</b>
+    <ul>
+      <li>IP Address: 105.100.50.2</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 105.100.50.1</li>
+      <li>Purpose / Role: ISP1 Internet Uplink</li>
+    </ul>
+  </li>
 
-Interface-Gi1/1
-- <b> IP Address: 105.100.50.2<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 105.100.50.1<b>
- - <b> Purpose / Role: ISP1 Internet Uplink<b>
+  <li><b>Interface Gi1/2</b>
+    <ul>
+      <li>IP Address: 197.200.100.2</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 197.200.100.1</li>
+      <li>Purpose / Role: ISP2 Backup Internet Uplink</li>
+    </ul>
+  </li>
 
- Interface-Gi1/2
-- <b> IP Address: 197.200.100.2<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 197.200.100.1<b>
- - <b> Purpose / Role: ISP2 Backup Internet Uplink<b>
+  <li><b>Interface Gi1/3</b>
+    <ul>
+      <li>IP Address: 10.2.2.2</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 10.2.2.1</li>
+      <li>Purpose / Role: Inside (Trusted Zone) – Core SW1</li>
+    </ul>
+  </li>
 
-Interface-Gi1/3
-- <b> IP Address: 10.2.2.2<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 10.2.2.1<b>
- - <b> Purpose / Role: Inside (Trusted Zone) – Core SW1<b>
- 
-Interface-Gi1/4
-- <b> IP Address: 10.2.2.10<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 10.2.2.9<b>
- - <b> Purpose / Role: Inside (Trusted Zone) – Core SW2<b>
+  <li><b>Interface Gi1/4</b>
+    <ul>
+      <li>IP Address: 10.2.2.10</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 10.2.2.9</li>
+      <li>Purpose / Role: Inside (Trusted Zone) – Core SW2</li>
+    </ul>
+  </li>
 
-Interface-Gi1/5
-- <b> IP Address: 10.11.11.1<b>
- - <b> Subnet Mask: 255.255.255.224 /27<b>
-- <b> Gateway: 10.11.11.33<b>
- - <b> Purpose / Role: DMZ (Web, DNS, Mail Servers)<b>
+  <li><b>Interface Gi1/5</b>
+    <ul>
+      <li>IP Address: 10.11.11.1</li>
+      <li>Subnet Mask: 255.255.255.224 (/27)</li>
+      <li>Gateway: 10.11.11.33</li>
+      <li>Purpose / Role: DMZ (Web, DNS, Mail Servers)</li>
+    </ul>
+  </li>
+</ul>
 
-<b> FWL2 – Firewall 2 (Secondary / Backup Firewall)</b>
+<h2>FWL2 – Firewall 2 (Secondary / Backup Firewall)</h2>
 
-Interface-Gi1/1
-- <b> IP Address: 105.100.50.6<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 105.100.50.5<b>
- - <b> Purpose / Role: Backup ISP1 Internet Uplink<b>
+<ul>
+  <li><b>Interface Gi1/1</b>
+    <ul>
+      <li>IP Address: 105.100.50.6</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 105.100.50.5</li>
+      <li>Purpose / Role: Backup ISP1 Internet Uplink</li>
+    </ul>
+  </li>
 
- Interface-Gi1/2
-- <b> IP Address: 197.200.100.6<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 197.200.100.5<b>
- - <b> Purpose / Role: Backup ISP2 Internet Uplink<b>
+  <li><b>Interface Gi1/2</b>
+    <ul>
+      <li>IP Address: 197.200.100.6</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 197.200.100.5</li>
+      <li>Purpose / Role: Backup ISP2 Internet Uplink</li>
+    </ul>
+  </li>
 
-Interface-Gi1/3
-- <b> IP Address: 10.2.2.6<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 10.2.2.5<b>
- - <b> Purpose / Role: Inside (Trusted Zone) – Core SW1<b>
+  <li><b>Interface Gi1/3</b>
+    <ul>
+      <li>IP Address: 10.2.2.6</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 10.2.2.5</li>
+      <li>Purpose / Role: Inside (Trusted Zone) – Core SW1</li>
+    </ul>
+  </li>
 
-Interface-Gi1/4
-- <b> IP Address: 10.2.2.14<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Gateway: 10.2.2.13<b>
- - <b> Purpose / Role: Inside (Trusted Zone) – Core SW2<b>
+  <li><b>Interface Gi1/4</b>
+    <ul>
+      <li>IP Address: 10.2.2.14</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 10.2.2.13</li>
+      <li>Purpose / Role: Inside (Trusted Zone) – Core SW2</li>
+    </ul>
+  </li>
 
-Interface-Gi1/5
-- <b> IP Address: 10.11.11.2<b>
- - <b> Subnet Mask: 255.255.255.224 /27<b>
-- <b> Gateway: 10.11.11.34<b>
- - <b> Purpose / Role: DMZ – Redundant Interface<b>
+  <li><b>Interface Gi1/5</b>
+    <ul>
+      <li>IP Address: 10.11.11.2</li>
+      <li>Subnet Mask: 255.255.255.224 (/27)</li>
+      <li>Gateway: 10.11.11.34</li>
+      <li>Purpose / Role: DMZ – Redundant Interface</li>
+    </ul>
+  </li>
+</ul>
 
-<b>FWL1-2 diagram</b>
+<h3>FWL1-2 Diagram</h3>
+
+
 
 
 <img width="486" alt="firwal" src="https://github.com/user-attachments/assets/29f5f6cf-5ab9-4d8c-8709-0ab6b396bd35" />
@@ -332,21 +397,29 @@ Interface-Gi1/5
 
 
 
-<b>SEACOM-ISP</b>
+<h2>SEACOM-ISP</h2>
 
-Interface-Gi0/0
-- <b> IP Address: 105.100.50.1<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Purpose / Role: Connection to Firewall 1 (FWL1)<b>
+<ul>
+  <li><b>Interface Gi0/0</b>
+    <ul>
+      <li>IP Address: 105.100.50.1</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connection to Firewall 1 (FWL1)</li>
+    </ul>
+  </li>
 
-<b>SEACOM-ISP</b>
+  <li><b>Interface Gi0/1</b>
+    <ul>
+      <li>IP Address: 105.100.50.5</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Purpose / Role: Connection to Firewall 2 (FWL2) or backup link</li>
+    </ul>
+  </li>
+</ul>
 
-Interface-Gi0/1
-- <b> IP Address: 105.100.50.5<b>
- - <b> Subnet Mask: 255.255.255.252 /30<b>
-- <b> Purpose / Role: Connection to Firewall 2 (FWL2) or backup link<b>
+<h3>ISP 1-2 Diagram</h3>
 
-<b>ISP 1-2 diagram</b>
+
 
 
 <img width="441" alt="ISP" src="https://github.com/user-attachments/assets/bbf5d504-ccfb-4b6d-bb55-575c727cdcc0" />
@@ -354,32 +427,41 @@ Interface-Gi0/1
 
 
 
-<b> Cisco Voice Gateway</b>
+<h2>Cisco Voice Gateway</h2>
+<ul>
+  <li><b>VLAN 70 (VoIP VLAN)</b></li>
+  <ul>
+    <li>Subnet: 172.30.0.0/16</li>
+    <li>Default Gateway: 172.30.0.1</li>
+    <li>Connected Devices: IP Phones, possibly Call Manager (CUCM), and switches</li>
+    <li>Purpose / Role: Acts as the SIP/H.323 gateway for internal phones to communicate externally</li>
+  </ul>
+</ul>
 
-- <b> VLAN 70 (VoIP VLAN)<b>
- - <b> Subnet: 172.30.0.0/16<b>
-- <b> Default Gateway: 172.30.0.1<b>
-- <b> Connected Devices: IP Phones, possibly Call Manager (CUCM), and switches<b>
-- <b> Purpose / Role: Acts as the SIP/H.323 gateway for internal phones to communicate externally<b>
+<h2>Cisco Wireless LAN Controller (WLC)</h2>
+<ul>
+  <li><b>VLAN 50 (Wireless LAN)</b></li>
+  <ul>
+    <li>Subnet: 10.20.0.0/16</li>
+    <li>Default Gateway: 10.20.0.1</li>
+    <li>Connected Devices: Access Points (APs), Wireless Clients (Phones, Laptops)</li>
+    <li>Purpose / Role: Manages all corporate wireless access; authenticates wireless clients</li>
+  </ul>
+</ul>
 
-<b> Cisco Wireless LAN Controller (WLC)</b>
+<h2>Net-Sec PC (Network Security PC)</h2>
+<ul>
+  <li><b>VLAN 90 (DMZ/Internal Services)</b></li>
+  <ul>
+    <li>Subnet: 10.11.11.32/27</li>
+    <li>Default Gateway: 10.11.11.33</li>
+    <li>Connected Devices: Firewalls (FWL1, FWL2), DMZ servers</li>
+    <li>Purpose: Monitors firewall logs, IDS/IPS, and other security platforms</li>
+  </ul>
+</ul>
 
-- <b> VLAN 50 (Wireless LAN)<b>
- - <b> Subnet: 10.20.0.0/16<b>
-- <b> Default Gateway: 10.20.0.1<b>
-- <b> Connected Devices: Access Points (APs), Wireless Clients (Phones, Laptops)<b>
-- <b> Purpose / Role: Manages all corporate wireless access; authenticates wireless clients<b>
+<h3>Voice Gateway, WLC & Net-Sec PC Diagram</h3>
 
-<b> Net-Sec PC (Network Security PC)</b>
-
-- <b> VLAN 90 (DMZ/Internal Services)<b>
- - <b> Subnet: 10.11.11.32/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Connected Devices: Firewalls (FWL1, FWL2), DMZ servers<b>
-- <b> Purpose: Monitors firewall logs, IDS/IPS, and other security platforms<b>
-
-
-<b> Voice Gateway , WLC  & Net-Sec PC Diagram </b>
 
 
 <img width="541" alt="gatway" src="https://github.com/user-attachments/assets/7ff6c583-3dba-4735-b053-cf8ec013747b" />
@@ -389,69 +471,99 @@ Interface-Gi0/1
 
 
 
-<B> DMZ / SERVER FARM </B>
+<h2>DMZ / Server Farm</h2>
 
-Network Storage (SAN)
-- <b>IP Adress: 10.11.11.23<b>
- - <b> Subnet: 10.11.11.0/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Purpose: Stores files, backups, shared<b>
+<ul>
+  <li><b>Network Storage (SAN)</b>
+    <ul>
+      <li>IP Address: 10.11.11.23</li>
+      <li>Subnet: 10.11.11.0/27</li>
+      <li>Default Gateway: 10.11.11.33</li>
+      <li>Purpose: Stores files, backups, shared resources</li>
+    </ul>
+  </li>
 
-Application Server (APP)
-- <b>IP Adress: 10.11.11.24<b>
- - <b> Subnet: 10.11.11.0/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Purpose: Hosts enterprise apps used by clients/users<b>
+  <li><b>Application Server (APP)</b>
+    <ul>
+      <li>IP Address: 10.11.11.24</li>
+      <li>Subnet: 10.11.11.0/27</li>
+      <li>Default Gateway: 10.11.11.33</li>
+      <li>Purpose: Hosts enterprise applications used by clients/users</li>
+    </ul>
+  </li>
 
-Mail Server (MAIL)
-- <b>IP Adress: 10.11.11.22<b>
- - <b> Subnet: 10.11.11.0/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Purpose: Handles corporate email<b>
+  <li><b>Mail Server (MAIL)</b>
+    <ul>
+      <li>IP Address: 10.11.11.22</li>
+      <li>Subnet: 10.11.11.0/27</li>
+      <li>Default Gateway: 10.11.11.33</li>
+      <li>Purpose: Handles corporate email</li>
+    </ul>
+  </li>
 
-File Server (FTP)
-- <b>IP Adress: 10.11.11.20<b>
- - <b> Subnet: 10.11.11.0/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Purpose: Serves internal/external file requests<b>
+  <li><b>File Server (FTP)</b>
+    <ul>
+      <li>IP Address: 10.11.11.20</li>
+      <li>Subnet: 10.11.11.0/27</li>
+      <li>Default Gateway: 10.11.11.33</li>
+      <li>Purpose: Serves internal and external file requests</li>
+    </ul>
+  </li>
 
-Web Server (WEB)
-- <b>IP Adress: 10.11.11.21<b>
- - <b> Subnet: 10.11.11.0/27<b>
-- <b> Default Gateway: 10.11.11.33<b>
-- <b> Purpose: Hosts internal/external websites<b>
+  <li><b>Web Server (WEB)</b>
+    <ul>
+      <li>IP Address: 10.11.11.21</li>
+      <li>Subnet: 10.11.11.0/27</li>
+      <li>Default Gateway: 10.11.11.33</li>
+      <li>Purpose: Hosts internal and external websites</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>DMZ / Server Farm Diagram</h3>
 
 
-<B> DMZ / SERVER FARM DIAGRAM</B>
 
 
 <img width="481" alt="NEW DMZ" src="https://github.com/user-attachments/assets/ba6077c8-03dc-4c3d-b141-bc29a45822f4" />
 
 
-<B> External User & Cloud </B>
-China User
-- <b>IP Adress: 8.0.0.20<b>
- - <b> Subnet Mask: 255.0.0.0 /8<b>
-- <b> Gateway: 30.30.30.30<b>
-- <b> Role: Remote User <b>
-- <b> Purpose: Access internal services (App, Web, VoIP, etc.) via Internet (possibly VPN) <b>
+<h2>External User & Cloud</h2>
 
-USA User
-- <b>IP Adress: 8.0.0.10<b>
- - <b> Subnet Mask: 255.0.0.0 /8<b>
-- <b> Gateway: 20.20.20.20 <b>
-- <b> Role: Remote User <b>
-- <b> Purpose: Access internal systems securely (VPN/Web/App/Voice)<b>
+<ul>
+  <li><b>China User</b>
+    <ul>
+      <li>IP Address: 8.0.0.20</li>
+      <li>Subnet Mask: 255.0.0.0 (/8)</li>
+      <li>Gateway: 30.30.30.30</li>
+      <li>Role: Remote User</li>
+      <li>Purpose: Access internal services (App, Web, VoIP, etc.) via Internet (possibly VPN)</li>
+    </ul>
+  </li>
 
-Cloud
-- <b>IP Adress: 20.20.20.2/30.30.30.2<b>
- - <b> Subnet Mask: 255.255.255.252/30<b>
-- <b> Gateway: 20.20.20.1/30.30.30.1 <b>
-- <b> Role: External Cloud Server<b>
-- <b> Purpose: Provides hosted services (VoIP trunk, backup, DNS, cloud apps, etc.) <b>
+  <li><b>USA User</b>
+    <ul>
+      <li>IP Address: 8.0.0.10</li>
+      <li>Subnet Mask: 255.0.0.0 (/8)</li>
+      <li>Gateway: 20.20.20.20</li>
+      <li>Role: Remote User</li>
+      <li>Purpose: Access internal systems securely (VPN/Web/App/Voice)</li>
+    </ul>
+  </li>
 
+  <li><b>Cloud</b>
+    <ul>
+      <li>IP Address: 20.20.20.2 / 30.30.30.2</li>
+      <li>Subnet Mask: 255.255.255.252 (/30)</li>
+      <li>Gateway: 20.20.20.1 / 30.30.30.1</li>
+      <li>Role: External Cloud Server</li>
+      <li>Purpose: Provides hosted services (VoIP trunk, backup, DNS, cloud apps, etc.)</li>
+    </ul>
+  </li>
+</ul>
 
-<B> External User & Cloud Diagram</B>
+<h3>External User & Cloud Diagram</h3>
+
 
 
 <img width="560" alt="cloud" src="https://github.com/user-attachments/assets/64c7ae66-0c37-4cb2-a625-3e33cfdd15bd" />
