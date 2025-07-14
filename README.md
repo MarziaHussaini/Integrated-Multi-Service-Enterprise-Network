@@ -3,47 +3,47 @@
 <h2>Description</h2>
 
 
-🔹 VLAN (Virtual Local Area Network) assignment groups switch ports to create separate virtual networks, while trunk ports connect switches and carry traffic for multiple VLANs using tags.
+🔹 VLAN segments switch ports into separate virtual networks; trunk ports carry traffic for multiple VLANs using tags.
 
-🔹SSH (Secure Shell) securely connects to network devices remotely by encrypting data and verifying users, ensuring safe management while meeting key security standards such as confidentiality, authentication, data integrity, and compliance.
+🔹 SSH provides secure, encrypted remote access to network devices, ensuring confidentiality, authentication, and integrity.
 
-🔹Standard Access Control List (ACL) A Standard ACL controls traffic by allowing or blocking it based only on the source IP address — for example, blocking all traffic coming from the IP range 192.168.1.0/24 to protect a sensitive server.
+🔹 Standard ACL filters traffic based solely on source IP, e.g., blocking 192.168.1.0/24 to protect sensitive systems.
 
-🔹 NAT converts private IPs to a public IP, letting multiple devices share one Internet address while keeping internal addresses hidden.
+🔹 NAT translates private IPs to public IPs, allowing multiple devices to share one Internet address while hiding internal networks.
 
-🔹 STP (Spanning Tree Protocol) prevents loops in Layer 2 networks by creating a loop-free topology. It selects a Root Bridge and calculates the best path to it based on path cost.
+🔹 STP prevents Layer 2 loops by creating a loop-free topology through root bridge selection and path cost calculation.
 
-🔹 PortFast is a Cisco feature for access ports that lets them skip STP delays and forward traffic immediately. It's ideal for end devices like PCs or IP phones—never use it on trunk or switch links to avoid loops.
+🔹 PortFast enables immediate forwarding on access ports by bypassing STP delays—used only for end devices, not switch links.
 
-🔹 BPDU Guard enhances security on PortFast-enabled access ports by shutting down the port if a BPDU is received. This prevents accidental or malicious switch connections to user ports.
+🔹 BPDU Guard protects PortFast ports by disabling them upon receiving BPDUs, preventing accidental/malicious switch connections.
 
-🔹 EtherChannel combines multiple physical links into one logical link to increase bandwidth, provide redundancy, and prevent loops (STP treats it as a single link.
+🔹 EtherChannel aggregates physical links into one logical link, increasing bandwidth and redundancy; STP treats it as a single link.
 
-🔹 IP Address and Subnetting – An IP address uniquely identifies a device on a network, allowing it to send and receive data. The subnet mask determines which portion of the IP address refers to the network and which to the host.
+🔹 IP Address & Subnetting define device identity and network boundaries; the subnet mask separates network and host portions.
 
-🔹 HSRP (Hot Standby Router Protocol) creates a virtual gateway by assigning one router as active and another as standby, ensuring network redundancy. If the active router fails, the standby takes over seamlessly, maintaining uninterrupted connectivity.
+🔹 HSRP provides gateway redundancy by assigning active/standby roles to routers; failover ensures continuous connectivity.
 
-🔹 LACP (Link Aggregation Control Protocol) combines multiple physical links into one logical link (LAG) to increase bandwidth and ensure redundancy. It’s part of IEEE 802.3ad, allowing interoperability between network devices like switches, routers, and servers.
+🔹 LACP (IEEE 802.3ad) bundles physical links into a single logical interface for higher bandwidth and fault tolerance.
 
-🔹 DHCP (Dynamic Host Configuration Protocol) is a network service that automatically assigns IP addresses and other network settings (like subnet mask, gateway, DNS) to devices on a network, enabling them to communicate without manual configuration.
+🔹 DHCP auto-assigns IP addresses and network settings (subnet, gateway, DNS) to clients for simplified configuration.
 
-🔹 DHCP Helper (also known as DHCP Relay) is a feature on routers or Layer 3 devices that forwards DHCP requests from clients in one subnet to a DHCP server located in another subnet. This allows centralized IP address management across multiple networks.
+🔹 DHCP Helper (relay) forwards DHCP requests across subnets, enabling centralized IP assignment in routed networks.
 
-🔹 DMZ (Demilitarized Zone) is a physical or logical subnet that separates an organization’s internal network from untrusted external networks (like the Internet). It hosts public-facing services (such as web, email, and DNS servers) to provide controlled access while protecting the internal network from direct exposure to external threats.
+🔹 DMZ is a secure zone between internal networks and the Internet, hosting public services while isolating critical systems.
 
-🔹 Server Farm refers to a collection of servers housed together, often in the same data center or rack, working collectively to deliver large-scale computing resources, applications, or services. Server farms provide scalability, load balancing, and redundancy for critical applications.
+🔹 Server Farm is a centralized group of servers providing scalable, redundant resources for applications and services.
 
-🔹 OSPF is a dynamic routing protocol that helps routers share and learn routes automatically. It finds the best, shortest path quickly and updates routes fast if a link fails, making it ideal for large networks.
+🔹 OSPF is a dynamic routing protocol that calculates optimal paths and quickly adapts to network changes—ideal for large networks.
 
-🔹 Wireless Network allows devices like laptops, smartphones, and tablets to connect to a network without physical cables. 
+🔹 Wireless Network enables cable-free connectivity for mobile devices like laptops and smartphones.
 
-🔹 Access Points (APs): Devices that broadcast wireless signals, allowing devices to connect to the network. Like, In an office, APs are placed on each floor to provide Wi-Fi coverage.
+🔹 Access Points (APs) broadcast Wi-Fi signals, connecting wireless devices to the network.
 
-🔹 Wireless LAN Controller (WLC) A central device that manages multiple access points (APs) to ensure secure, seamless, and efficient wireless connectivity. It handles network access, user authentication, and smooth roaming between APs. With a WLC, employees can move between floors without losing their Wi-Fi connection.
+🔹 Wireless LAN Controller (WLC) centrally manages multiple APs, ensuring secure, seamless connectivity and roaming.
 
-🔹 CAPWAP is a protocol that allows a Wireless LAN Controller (WLC) to manage Access Points (APs) automatically.
+🔹 CAPWAP allows WLCs to control APs remotely and efficiently using a standardized protocol.
 
-🔹 VoIP (Voice over Internet Protocol) VoIP allows voice calls over IP networks (like the internet or company LAN) instead of traditional phone lines.
+🔹 VoIP delivers voice communication over IP networks.
 
 <br />
 
